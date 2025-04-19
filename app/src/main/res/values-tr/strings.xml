@@ -14,6 +14,13 @@
     <string name="already_registered">Zaten üye misin?</string>
     <string name="login">Giriş Yap</string>
     <string name="search_item">Ürün Arayın</string>
+    <string name="item_added">Ürün sepetinize eklendi!</string>
+    <string name="item_removed">Ürün sepetinizden kaldırıldı!</string>
+    <string name="description">Özellikler</string>
+    <string name="price">Fiyat</string>
+    <string name="add_to_cart">Sepete Ekle</string>
+    <string name="item_details">Ürün Detayları</string>
+    <string name="number_of_items">adet ürün</string>
 
     <string name="home">Ana Sayfa</string>
     <string name="favorites">Favoriler</string>
@@ -22,5 +29,80 @@
 
     <string name="turkish">Türkçe</string>
     <string name="english">İngilizce</string>
+
+    <!-- Ürün İsimleri -->
+    <string name="item_espresso">Espresso</string>
+    <string name="item_cappuccino">Kapuçino</string>
+    <string name="item_latte">Latte</string>
+    <string name="item_americano">Americano</string>
+    <string name="item_mocha">Mocha</string>
+    <string name="item_hot_chocolate">Sıcak Çikolata</string>
+    <string name="item_chai_latte">Chai Latte</string>
+    <string name="item_matcha_latte">Matcha Latte</string>
+    <string name="item_turkish_coffee">Türk Kahvesi</string>
+    <string name="item_herbal_tea">Bitki Çayı</string>
+    <string name="item_iced_coffee">Buzlu Kahve</string>
+    <string name="item_iced_latte">Buzlu Latte</string>
+    <string name="item_iced_americano">Buzlu Americano</string>
+    <string name="item_iced_mocha">Buzlu Mocha</string>
+    <string name="item_cold_brew">Cold Brew</string>
+    <string name="item_iced_matcha_latte">Buzlu Matcha Latte</string>
+    <string name="item_iced_chai">Buzlu Chai</string>
+    <string name="item_lemonade">Limonata</string>
+    <string name="item_iced_peach_tea">Buzlu Şeftali Çayı</string>
+    <string name="item_berry_smoothie">Orman Meyveli Smoothie</string>
+    <string name="item_croissant">Kruvasan</string>
+    <string name="item_bagel">Bagel</string>
+    <string name="item_muffin">Muffin</string>
+    <string name="item_toast">Tost</string>
+    <string name="item_cheesecake">Cheesecake</string>
+    <string name="item_brownie">Browni</string>
+    <string name="item_sandwich">Sandviç</string>
+    <string name="item_quiche">Kiş</string>
+    <string name="item_scone">Scone</string>
+    <string name="item_waffle">Waffle</string>
+    <string name="item_pancakes">Pankek</string>
+    <string name="item_salad">Salata</string>
+    <string name="item_fruit_bowl">Meyve Tabağı</string>
+    <string name="item_donut">Donut</string>
+    <string name="item_avocado_toast">Avokadolu Tost</string>
+
+    <!-- Özellikler -->
+    <string name="desc_espresso">Yoğun ve sert kahve shot</string>
+    <string name="desc_cappuccino">Espresso, buharda süt ve süt köpüğü ile</string>
+    <string name="desc_latte">Buharda süt ile kremalı kahve</string>
+    <string name="desc_americano">Sıcak su ile seyreltilmiş espresso</string>
+    <string name="desc_mocha">Çikolata ve buharda süt ile espresso</string>
+    <string name="desc_hot_chocolate">Buharda süt ile zengin kakao içeceği</string>
+    <string name="desc_chai_latte">Baharatlı çay ve süt karışımı</string>
+    <string name="desc_matcha_latte">Yeşil çay tozu ve süt ile</string>
+    <string name="desc_turkish_coffee">Geleneksel ince çekilmiş kahve</string>
+    <string name="desc_herbal_tea">Kafeinsiz rahatlatıcı bitki çayı</string>
+    <string name="desc_iced_coffee">Buz üzerinde soğuk demlenmiş kahve</string>
+    <string name="desc_iced_latte">Soğutulmuş espresso ve süt</string>
+    <string name="desc_iced_americano">Soğuk su ile espresso, buz üzerinde</string>
+    <string name="desc_iced_mocha">Espresso, çikolata ve süt buzla</string>
+    <string name="desc_cold_brew">Yavaş demlenmiş soğuk kahve</string>
+    <string name="desc_iced_matcha_latte">Soğuk yeşil çay ve süt</string>
+    <string name="desc_iced_chai">Buz ve süt ile chai çayı</string>
+    <string name="desc_lemonade">Tatlı ve ekşi serinletici limon içeceği</string>
+    <string name="desc_iced_peach_tea">Soğuk ve meyveli şeftalili çay</string>
+    <string name="desc_berry_smoothie">Taze meyve ve yoğurtlu karışım</string>
+    <string name="desc_croissant">Hilal şeklinde Fransız hamur işi</string>
+    <string name="desc_bagel">Kaynatılıp fırınlanmış halka ekmek</string>
+    <string name="desc_muffin">Yumuşak, kek benzeri tatlı atıştırmalık</string>
+    <string name="desc_toast">Kızartılmış altın rengi ekmek dilimleri</string>
+    <string name="desc_cheesecake">Bisküvi tabanlı kremalı tatlı</string>
+    <string name="desc_brownie">Yoğun çikolatalı kare tatlı</string>
+    <string name="desc_sandwich">Ekmek arası et, sebze veya sos</string>
+    <string name="desc_quiche">Yumurta, peynir ve sebzeli tuzlu turta</string>
+    <string name="desc_scone">Genellikle reçelle servis edilen İngiliz çöreği</string>
+    <string name="desc_waffle">Izgara desenli üstü dolgulu hamur işi</string>
+    <string name="desc_pancakes">Üst üste yumuşak kahvaltı kekleri</string>
+    <string name="desc_salad">Taze sebze ve soslarla karışık salata</string>
+    <string name="desc_fruit_bowl">Taze mevsim meyvelerinden karışım</string>
+    <string name="desc_donut">Kızartılmış, glazeli ya da dolgulu halka tatlı</string>
+    <string name="desc_avocado_toast">Ezilmiş avokado ile kızarmış ekmek</string>
+
 
 </resources>

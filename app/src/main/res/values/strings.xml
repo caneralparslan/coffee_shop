@@ -13,6 +13,13 @@
     <string name="already_registered">Already registered?</string>
     <string name="login">Login</string>
     <string name="search_item">Search Item</string>
+    <string name="item_added">Item added to your cart!</string>
+    <string name="item_removed">Item removed from your cart!</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="item_details">Item Details</string>
+    <string name="number_of_items">items</string>
 
     <string name="home">Home</string>
     <string name="favorites">Favorites</string>
@@ -21,6 +28,82 @@
 
     <string name="turkish">Turkish</string>
     <string name="english">English</string>
+
+
+    <!-- Item Names -->
+    <string name="item_espresso">Espresso</string>
+    <string name="item_cappuccino">Cappuccino</string>
+    <string name="item_latte">Latte</string>
+    <string name="item_americano">Americano</string>
+    <string name="item_mocha">Mocha</string>
+    <string name="item_hot_chocolate">Hot Chocolate</string>
+    <string name="item_chai_latte">Chai Latte</string>
+    <string name="item_matcha_latte">Matcha Latte</string>
+    <string name="item_turkish_coffee">Turkish Coffee</string>
+    <string name="item_herbal_tea">Herbal Tea</string>
+    <string name="item_iced_coffee">Iced Coffee</string>
+    <string name="item_iced_latte">Iced Latte</string>
+    <string name="item_iced_americano">Iced Americano</string>
+    <string name="item_iced_mocha">Iced Mocha</string>
+    <string name="item_cold_brew">Cold Brew</string>
+    <string name="item_iced_matcha_latte">Iced Matcha Latte</string>
+    <string name="item_iced_chai">Iced Chai</string>
+    <string name="item_lemonade">Lemonade</string>
+    <string name="item_iced_peach_tea">Iced Peach Tea</string>
+    <string name="item_berry_smoothie">Berry Smoothie</string>
+    <string name="item_croissant">Croissant</string>
+    <string name="item_bagel">Bagel</string>
+    <string name="item_muffin">Muffin</string>
+    <string name="item_toast">Toast</string>
+    <string name="item_cheesecake">Cheesecake</string>
+    <string name="item_brownie">Brownie</string>
+    <string name="item_sandwich">Sandwich</string>
+    <string name="item_quiche">Quiche</string>
+    <string name="item_scone">Scone</string>
+    <string name="item_waffle">Waffle</string>
+    <string name="item_pancakes">Pancakes</string>
+    <string name="item_salad">Salad</string>
+    <string name="item_fruit_bowl">Fruit Bowl</string>
+    <string name="item_donut">Donut</string>
+    <string name="item_avocado_toast">Avocado Toast</string>
+
+    <!-- Descriptions -->
+    <string name="desc_espresso">Strong and concentrated coffee shot</string>
+    <string name="desc_cappuccino">Espresso with steamed milk and milk foam</string>
+    <string name="desc_latte">Creamy coffee with steamed milk</string>
+    <string name="desc_americano">Espresso diluted with hot water</string>
+    <string name="desc_mocha">Espresso with chocolate and steamed milk</string>
+    <string name="desc_hot_chocolate">Rich cocoa drink with steamed milk</string>
+    <string name="desc_chai_latte">Spiced tea with milk</string>
+    <string name="desc_matcha_latte">Green tea powder with milk</string>
+    <string name="desc_turkish_coffee">Traditional finely ground coffee</string>
+    <string name="desc_herbal_tea">Caffeine-free relaxing tea</string>
+    <string name="desc_iced_coffee">Chilled brewed coffee over ice</string>
+    <string name="desc_iced_latte">Chilled espresso with milk</string>
+    <string name="desc_iced_americano">Espresso with cold water over ice</string>
+    <string name="desc_iced_mocha">Espresso, chocolate, and milk over ice</string>
+    <string name="desc_cold_brew">Slow-steeped cold brewed coffee</string>
+    <string name="desc_iced_matcha_latte">Chilled green tea with milk</string>
+    <string name="desc_iced_chai">Chai tea with ice and milk</string>
+    <string name="desc_lemonade">Refreshing sweet and tangy lemon drink</string>
+    <string name="desc_iced_peach_tea">Cool and fruity peach flavored tea</string>
+    <string name="desc_berry_smoothie">Blended mix of fresh berries and yogurt</string>
+    <string name="desc_croissant">Crescent-shaped French pastry</string>
+    <string name="desc_bagel">Boiled and baked round bread with a hole</string>
+    <string name="desc_muffin">Soft baked cake-like treat</string>
+    <string name="desc_toast">Crispy golden brown bread slices</string>
+    <string name="desc_cheesecake">Creamy dessert with biscuit base</string>
+    <string name="desc_brownie">Rich chocolate square dessert</string>
+    <string name="desc_sandwich">Bread filled with deli meat, veggies, or spreads</string>
+    <string name="desc_quiche">Savory pie filled with egg, cheese, and vegetables</string>
+    <string name="desc_scone">Buttery British pastry, often served with jam</string>
+    <string name="desc_waffle">Golden grid-patterned pastry with toppings</string>
+    <string name="desc_pancakes">Fluffy breakfast cakes, often stacked</string>
+    <string name="desc_salad">Fresh mix of greens, veggies, and dressings</string>
+    <string name="desc_fruit_bowl">Mixed seasonal fruits, freshly served</string>
+    <string name="desc_donut">Fried dough ring, glazed or filled</string>
+    <string name="desc_avocado_toast">Toasted bread with mashed avocado topping</string>
+
 
 
 

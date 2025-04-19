@@ -2,9 +2,9 @@ package com.example.coffee_shop.models
 
 data class Item(
     val id: String,
-    val name: String,
-    val description: String,
+    val nameResId: Int,
+    val descResId: Int,
     val price: Double,
-    val imagePath: Int, // or String if using URL or filename
+    val imageResId: Int, // or String if using URL or filename
     val category: ItemCategory
 )
