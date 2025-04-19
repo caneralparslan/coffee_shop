@@ -52,8 +52,8 @@ fun MainScreen(navController: NavController) {
             startDestination = BottomNavItem.Home.route,
             modifier = Modifier.padding(top = innerPadding.calculateTopPadding())
         ) {
-            composable(BottomNavItem.Home.route) { HomeScreen() }
-            composable(BottomNavItem.Favorite.route) { FavoriteScreen() }
+            composable(BottomNavItem.Home.route) { HomeScreen(navController) }
+            composable(BottomNavItem.Favorite.route) { FavoriteScreen(navController) }
             composable(BottomNavItem.Cart.route) { CartScreen() }
         }
     }

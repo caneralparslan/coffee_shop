@@ -1,14 +1,10 @@
 package com.example.coffee_shop.navigation
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.coffee_shop.screens.CartScreen
-import com.example.coffee_shop.screens.FavoriteScreen
-import com.example.coffee_shop.screens.HomeScreen
+import com.example.coffee_shop.screens.ItemDetailsScreen
 import com.example.coffee_shop.screens.MainScreen
 import com.example.coffee_shop.screens.SettingsScreen
 import com.example.coffee_shop.screens.SplashScreen
@@ -29,5 +25,12 @@ fun CoffeeShopNavigation(){
         composable("signup_screen"){ SignUpScreen(navController) }
         composable("main_screen"){ MainScreen(navController) }
         composable("settings_screen"){ SettingsScreen(navController) }
+
+        composable("item_details_screen/{itemId}") { backStackEntry ->
+            val itemId = backStackEntry.arguments?.getString("itemId")
+            ItemDetailsScreen(
+                navController = navController,
+                itemId = itemId ?: "")
+        }
     }
 }

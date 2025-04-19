@@ -3,6 +3,7 @@ package com.example.coffee_shop.screens.login_signup
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.coffee_shop.R
@@ -78,16 +79,29 @@ class LoginSignupViewModel: ViewModel(){
     }
 
 
-    private fun createUserToFirestoreDb(
-        userName: String
-    ){
+    private fun createUserToFirestoreDb(userName: String) {
+        val currentUser = FirebaseAuth.getInstance().currentUser
 
-        val user = MUser(
-            userName = userName
-        ).toMap()
+        if (currentUser != null) {
+            val user = MUser(
+                userId = currentUser.uid,
+                userName = userName
+            ).toMap()
 
-        FirebaseFirestore.getInstance().collection("users").add(user)
+            FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(currentUser.uid) // Use uid as document ID
+                .set(user)
+                .addOnSuccessListener {
+                    Log.d("Firestore", "User successfully written!")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("Firestore", "Error writing user", e)
+                }
 
+        } else {
+            Log.e("Firestore", "createUserToFirestoreDb: currentUser is null")
+        }
     }
 
 }
