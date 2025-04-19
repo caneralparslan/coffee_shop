@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kahve Dükkanı</string>
+    <string name="enjoy">Tadını Çıkar!</string>
+    <string name="email">E-posta</string>
+    <string name="password">Şifre</string>
+    <string name="re_password">Şifreyi Doğrula</string>
+    <string name="incorrect_credentials">E-posta veya Şifre Yanlış!</string>
+    <string name="email_warning">Lütfen geçerli bir e-posta adresi girin</string>
+    <string name="password_warning">Şifre en az 6 karakter olmalı</string>
+    <string name="passwords_match_warning">Şifreler uyuşmuyor!</string>
+    <string name="no_account_question">Henüz bir hesabın yok mu?</string>
+    <string name="sign_up">Kayıt Ol</string>
+    <string name="already_registered">Zaten üye misin?</string>
+    <string name="login">Giriş Yap</string>
+
+    <string name="home">Ana Sayfa</string>
+    <string name="favorites">Favoriler</string>
+    <string name="shopping_cart">Sepet</string>
+    <string name="settings">Ayarlar</string>
+
+    <string name="turkish">Türkçe</string>
+    <string name="english">İngilizce</string>
+
 </resources>

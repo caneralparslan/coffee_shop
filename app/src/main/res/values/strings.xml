@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Coffee Shop</string>
+    <string name="enjoy">Enjoy!</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="re_password">Confirm Password</string>
+    <string name="incorrect_credentials">Email or Password is Incorrect!</string>
+    <string name="email_warning">Please enter a valid email address</string>
+    <string name="password_warning">Password should be at least 6 characters</string>
+    <string name="passwords_match_warning">Passwords don\'t match!</string>
+    <string name="no_account_question">Don\'t you have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_registered">Already registered?</string>
+    <string name="login">Login</string>
+
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="settings">Settings</string>
+
+    <string name="turkish">Turkish</string>
+    <string name="english">English</string>
+
+
+
 </resources>
