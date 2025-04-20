@@ -37,6 +37,7 @@ import com.example.coffee_shop.components.CartItemTile
 import com.example.coffee_shop.components.CommonAlertDialog
 import com.example.coffee_shop.models.Item
 import com.example.coffee_shop.models.Order
+import com.example.coffee_shop.screens.favorite.FavoriteViewModel
 import com.example.coffee_shop.screens.orders.OrderViewModel
 
 @Composable
@@ -45,7 +46,6 @@ fun CartScreen(
     cartViewModel: CartViewModel = hiltViewModel(),
     orderViewModel: OrderViewModel = hiltViewModel()
 ){
-
     Scaffold(
         modifier = Modifier.fillMaxSize().padding(horizontal = 10.dp)
     ) {

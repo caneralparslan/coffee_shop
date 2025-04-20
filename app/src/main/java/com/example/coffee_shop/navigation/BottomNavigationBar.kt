@@ -2,6 +2,7 @@ package com.example.coffee_shop.navigation
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,8 +33,8 @@ fun BottomNavigationBar(navController: NavController = rememberNavController()) 
 
         navItems.forEach { item ->
             NavigationBarItem(
-                icon = { Icon(item.icon, contentDescription = item.label) },
-                label = { Text(item.label) },
+                icon = { Icon(item.icon, contentDescription = "navigation",
+                    modifier = Modifier.size(30.dp)) },
                 selected = currentRoute == item.route,
                 onClick = {
                     if (currentRoute != item.route) {

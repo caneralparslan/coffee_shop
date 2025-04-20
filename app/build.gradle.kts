@@ -123,4 +123,8 @@ dependencies {
     // AD
     implementation("com.google.android.gms:play-services-ads:24.2.0")
 
+
+    implementation("androidx.appcompat:appcompat:1.7.0")
+
+
 }

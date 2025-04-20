@@ -2,9 +2,14 @@ package com.example.coffee_shop.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.runtime.MutableState
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.os.LocaleListCompat
 import com.example.coffee_shop.R
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -69,12 +74,36 @@ object LanguagePreference {
 
     fun getLanguage(context: Context): String {
         val prefs: SharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-        return prefs.getString(LANGUAGE_KEY, "English") ?: "English"
+        return prefs.getString(LANGUAGE_KEY, "en") ?: "en"
     }
+
+    fun applyAppLanguage(languageCode: String) {
+        val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(languageCode)
+        AppCompatDelegate.setApplicationLocales(appLocale)
+
+    }
+
+    fun wrapContextWithLanguage(context: Context, languageCode: String): Context? {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+
+        val config = Configuration(context.resources.configuration)
+        config.setLocale(locale)
+
+        return context.createConfigurationContext(config)
+    }
+
 }
 
 fun formatDate(timeMillis: Long): String {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()) // Customize the format as needed
     val date = Date(timeMillis)
     return dateFormat.format(date)
+}
+
+fun getLanguageNameFromCode(languageCode: String, context: Context): String{
+    return when (languageCode){
+        "tr" -> context.getString(R.string.turkish)
+        else -> context.getString(R.string.english)
+    }
 }

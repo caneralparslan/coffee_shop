@@ -83,27 +83,35 @@ fun HomeContent(navController: NavController = rememberNavController()) {
         Categories(selectedCategory)
 
         Spacer(Modifier.height(10.dp))
-        ItemsContent(selectedCategory, navController)
+        ItemsContent(searchQuery, selectedCategory, navController)
 
     }
 }
 
 @Composable
-fun ItemsContent(selectedCategory: MutableState<ItemCategory>,
-                 navController: NavController) {
+fun ItemsContent(
+    searchQuery: MutableState<String>,
+    selectedCategory: MutableState<ItemCategory>,
+    navController: NavController
+) {
 
 
-    val items = if (selectedCategory.value == ItemCategory.ALL) {
-        itemsList.sortedBy { it.category.ordinal }
-    } else {
-        itemsList.filter { it.category == selectedCategory.value }
-    }
+    val filteredItems = itemsList
+        .filter {
+            item ->
+            val itemName = stringResource(item.nameResId)
+
+            (selectedCategory.value == ItemCategory.ALL || item.category == selectedCategory.value) &&
+                    itemName.contains(searchQuery.value.trim(), ignoreCase = true)
+        }
+        .sortedBy { it.category.ordinal }
+
 
     Column (
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Text("${items.size} ${stringResource(R.string.number_of_items)}",
+        Text("${filteredItems.size} ${stringResource(R.string.number_of_items)}",
             style = TextStyle(color = Color.Gray,
                 fontSize = 13.sp)
         )
@@ -113,7 +121,7 @@ fun ItemsContent(selectedCategory: MutableState<ItemCategory>,
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(8.dp),
         ) {
-            items(items) { item ->
+            items(filteredItems) { item ->
                 ItemCard(item, navController)
                 Spacer(Modifier.height(10.dp))
             }

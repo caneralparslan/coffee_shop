@@ -39,4 +39,8 @@ class FavoriteViewModel @Inject constructor(private val repository: CoffeeShopDb
     fun removeFavorite(id: String) = viewModelScope.launch {
         repository.removeFavorite(id)
     }
+
+    fun removeAllFavorites() = viewModelScope.launch {
+        repository.deleteAllFavorites()
+    }
 }
