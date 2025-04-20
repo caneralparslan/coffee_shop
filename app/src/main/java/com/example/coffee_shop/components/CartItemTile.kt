@@ -1,14 +1,12 @@
 package com.example.coffee_shop.components
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,6 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -34,14 +33,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import coil3.compose.rememberAsyncImagePainter
-import com.example.coffee_shop.data.itemsList
 import com.example.coffee_shop.models.Item
 import com.example.coffee_shop.screens.cart.CartViewModel
 
@@ -70,13 +65,10 @@ fun CartItemTile(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Image(
-                    painter = rememberAsyncImagePainter(item.imageResId),
-                    contentDescription = "Cart Item Image",
-                    modifier = Modifier
-                        .size(100.dp)
-                        .clip(RoundedCornerShape(18.dp))
-                )
+                ItemImageWithLoading(
+                    item.imagePath,
+                    Modifier.size(100.dp)
+                        .clip(RoundedCornerShape(18.dp)))
 
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,

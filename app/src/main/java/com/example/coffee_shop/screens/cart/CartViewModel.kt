@@ -18,7 +18,7 @@ import javax.inject.Inject
 class CartViewModel @Inject constructor(
     private val cartRepository: CartRepository) : ViewModel() {
 
-    private val _cartList = MutableStateFlow<List<Item>>(emptyList()) // local state
+    private val _cartList = MutableStateFlow<List<Item>>(emptyList())
     val cartList: StateFlow<List<Item>> = _cartList
 
     private val _totalPrice = MutableStateFlow(0.0)

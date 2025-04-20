@@ -38,7 +38,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil3.compose.rememberAsyncImagePainter
 import com.example.coffee_shop.models.Favorite
 import com.example.coffee_shop.screens.favorite.FavoriteViewModel
 
@@ -74,10 +73,9 @@ fun FavoriteItemTile(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Image(painter = rememberAsyncImagePainter(favoriteItem.imageResId),
-                    contentDescription = "Favorite Item Image",
-                    modifier = Modifier
-                        .size(100.dp)
+                ItemImageWithLoading(
+                    favoriteItem.imagePath,
+                    Modifier.size(100.dp)
                         .clip(RoundedCornerShape(18.dp)))
 
                 Column(

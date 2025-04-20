@@ -60,7 +60,7 @@ class CartRepository @Inject constructor(
     // Clear cart
     fun clearCart() {
         sharedPreferences.edit().remove(cartKey).apply()
-        _cartItems.value = emptyList() // clear the cart
+        _cartItems.value = emptyList()
     }
 
     // Clear all the occurrences of given item

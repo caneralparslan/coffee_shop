@@ -1,7 +1,5 @@
 package com.example.coffee_shop.screens
 
-import android.content.Context
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,14 +12,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -55,9 +51,7 @@ fun SettingsContent(
     innerPadding: PaddingValues,
     navController: NavController
 ) {
-    val context = LocalContext.current
-    val selectedLanguage = remember { mutableStateOf(getLanguageNameFromCode(LanguagePreference.getLanguage(context), context)) }
-    val showLanguageDialog = remember { mutableStateOf(false) }
+
 
     Column(
         modifier = Modifier
@@ -66,66 +60,84 @@ fun SettingsContent(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Order History setting
-        SettingsTile(
-            label = stringResource(R.string.order_history),
-            settingsType = "order"
-        ) {
-            navController.navigate("orders_screen")
-        }
 
-        // Language setting
-        SettingsTile(
-            label = stringResource(R.string.language),
-            settingsType = "language",
-            language = selectedLanguage.value
-        ) {
-            showLanguageDialog.value = true
-        }
+        // Order History
+        OrderHistoryTile(navController)
 
-        // Log out setting
-        val showDialog = remember { mutableStateOf(false) }
+        // Language
+        ChangeLanguageTile()
 
-        SettingsTile(
-            label = stringResource(R.string.log_out_title),
-            settingsType = "log_out",
-        ) {
-            showDialog.value = true
-        }
+        // Log out
+        LogOutTile(navController)
 
-        if (showDialog.value) {
-            CommonAlertDialog(
-                showDialog = showDialog,
-                titleResId = R.string.log_out_title,
-                questionResId = R.string.log_out_question
-            ) {
-                showDialog.value = false
-                FirebaseAuth.getInstance().signOut()
-                navController.navigate("login_screen") {
-                    popUpTo(0) { inclusive = true }
-                }
+
+    }
+}
+
+@Composable
+fun ChangeLanguageTile(){
+    val context = LocalContext.current
+    val selectedLanguage = remember { mutableStateOf(getLanguageNameFromCode(LanguagePreference.getLanguage(context), context)) }
+    val showLanguageDialog = remember { mutableStateOf(false) }
+
+    SettingsTile(
+        label = stringResource(R.string.language),
+        settingsType = "language",
+        language = selectedLanguage.value
+    ) {
+        showLanguageDialog.value = true
+    }
+    if (showLanguageDialog.value) {
+        LanguageSelectionDialog(
+            onDismiss = { showLanguageDialog.value = false },
+            onLanguageSelected = { languageName, languageCode ->
+                LanguagePreference.setLanguage(context, languageCode) // Save selected language
+                selectedLanguage.value = languageName // Update displayed language
+                showLanguageDialog.value = false
+
+                LanguagePreference.applyAppLanguage(languageCode)
+
+                // restart activity
+                val activity = (context as? android.app.Activity)
+                activity?.recreate()
+
             }
-        }
+        )
+    }
+}
 
-        // Language Dialog
-        if (showLanguageDialog.value) {
-            LanguageSelectionDialog(
-                onDismiss = { showLanguageDialog.value = false },
-                onLanguageSelected = { languageName, languageCode ->
-                    LanguagePreference.setLanguage(context, languageCode) // Save selected language
-                    selectedLanguage.value = languageName // Update displayed language
-                    showLanguageDialog.value = false
+@Composable
+fun OrderHistoryTile(navController: NavController){
+    SettingsTile(
+        label = stringResource(R.string.order_history),
+        settingsType = "order"
+    ) {
+        navController.navigate("orders_screen")
+    }
+}
 
-                    LanguagePreference.applyAppLanguage(languageCode)
+@Composable
+fun LogOutTile(navController: NavController){
+    val showDialog = remember { mutableStateOf(false) }
 
-                    // restart activity
-                    val activity = (context as? android.app.Activity)
-                    activity?.recreate()
+    SettingsTile(
+        label = stringResource(R.string.log_out_title),
+        settingsType = "log_out",
+    ) {
+        showDialog.value = true
+    }
 
-                    Log.d("activity", "SettingsContent: $activity")
-
-                }
-            )
+    if (showDialog.value) {
+        CommonAlertDialog(
+            showDialog = showDialog,
+            titleResId = R.string.log_out_title,
+            questionResId = R.string.log_out_question
+        ) {
+            showDialog.value = false
+            FirebaseAuth.getInstance().signOut()
+            navController.navigate("login_screen") {
+                popUpTo(0) { inclusive = true }
+            }
         }
     }
 }
@@ -160,7 +172,7 @@ fun LanguageSelectionDialog(
         },
         confirmButton = { },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) }
         }
     )
 }

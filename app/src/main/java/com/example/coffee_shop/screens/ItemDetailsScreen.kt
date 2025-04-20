@@ -42,14 +42,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import coil3.compose.rememberAsyncImagePainter
 import com.example.coffee_shop.R
+import com.example.coffee_shop.components.ItemImageWithLoading
 import com.example.coffee_shop.components.TopBar
 import com.example.coffee_shop.data.itemsList
 import com.example.coffee_shop.models.Favorite
@@ -58,11 +56,10 @@ import com.example.coffee_shop.screens.cart.CartViewModel
 import com.example.coffee_shop.screens.favorite.FavoriteViewModel
 
 
-@Preview
 @Composable
 fun ItemDetailsScreen(
-    navController: NavController = rememberNavController(),
-    itemId: String = "1",
+    navController: NavController,
+    itemId: String,
     favoriteViewModel: FavoriteViewModel = hiltViewModel(),
     cartViewModel: CartViewModel = hiltViewModel()
 ){
@@ -104,11 +101,10 @@ fun DetailsContent(innerPadding: PaddingValues,
 
         Text(stringResource(item.nameResId), style = TextStyle(fontSize = 24.sp))
         Spacer(Modifier.height(20.dp))
-        Image(painter = rememberAsyncImagePainter(item.imageResId),
-            contentDescription = "Item Image",
-            modifier = Modifier
-                .size(250.dp)
-                .clip(RoundedCornerShape(18.dp)))
+        ItemImageWithLoading(
+            item.imagePath,
+            Modifier.size(250.dp)
+            .clip(RoundedCornerShape(18.dp)))
 
 
         Spacer(Modifier.height(50.dp))
@@ -155,7 +151,7 @@ fun FavContent(itemId: String, favoriteViewModel: FavoriteViewModel) {
             nameResId = item.nameResId,
             descResId = item.descResId,
             price = item.price,
-            imageResId = item.imageResId,
+            imagePath = item.imagePath,
             category = item.category
         )
     }

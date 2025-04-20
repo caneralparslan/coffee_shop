@@ -3,12 +3,10 @@ package com.example.coffee_shop.util
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Configuration
-import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.runtime.MutableState
-import androidx.compose.ui.platform.LocalContext
 import androidx.core.os.LocaleListCompat
 import com.example.coffee_shop.R
 import java.text.SimpleDateFormat
@@ -96,7 +94,7 @@ object LanguagePreference {
 }
 
 fun formatDate(timeMillis: Long): String {
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()) // Customize the format as needed
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
     val date = Date(timeMillis)
     return dateFormat.format(date)
 }

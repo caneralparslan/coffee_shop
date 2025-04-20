@@ -5,6 +5,6 @@ data class Item(
     val nameResId: Int,
     val descResId: Int,
     val price: Double,
-    val imageResId: Int, // or String if using URL or filename
+    val imagePath: String,
     val category: ItemCategory
 )

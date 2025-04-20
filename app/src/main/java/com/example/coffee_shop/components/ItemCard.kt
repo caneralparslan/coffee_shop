@@ -37,7 +37,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import coil3.compose.rememberAsyncImagePainter
 import com.example.coffee_shop.R
 import com.example.coffee_shop.data.itemsList
 import com.example.coffee_shop.models.Item
@@ -71,9 +70,9 @@ fun ItemCard(
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Image(painter = rememberAsyncImagePainter(item.imageResId),
-                    contentDescription = "Item Image",
-                    modifier = Modifier.size(120.dp)
+                ItemImageWithLoading(
+                    item.imagePath,
+                    Modifier.size(120.dp)
                         .clip(RoundedCornerShape(12.dp)))
 
                 Text(stringResource(item.nameResId), style = TextStyle(fontSize = 15.sp))

@@ -21,8 +21,8 @@ data class Favorite(
     @ColumnInfo(name = "price")
     val price: Double,
 
-    @ColumnInfo(name = "imageResId")
-    val imageResId: Int,
+    @ColumnInfo(name = "imagePath")
+    val imagePath: String,
 
     @ColumnInfo(name = "category")
     val category: ItemCategory

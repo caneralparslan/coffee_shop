@@ -65,7 +65,7 @@ fun MainScreen(navController: NavController) {
                 }
             }
 
-            BannerAdView() // Always sticks to bottom
+            BannerAdView()
         }
     }
 }

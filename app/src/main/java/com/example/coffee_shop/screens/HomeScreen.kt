@@ -36,17 +36,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.coffee_shop.R
-import com.example.coffee_shop.components.BannerAdView
 import com.example.coffee_shop.components.CategoryChip
 import com.example.coffee_shop.components.ItemCard
 import com.example.coffee_shop.data.itemsList
-import com.example.coffee_shop.models.Item
 import com.example.coffee_shop.models.ItemCategory
 
 @Composable
@@ -60,9 +56,8 @@ fun HomeScreen(navController: NavController){
 
 }
 
-@Preview
 @Composable
-fun HomeContent(navController: NavController = rememberNavController()) {
+fun HomeContent(navController: NavController) {
 
     val searchQuery = remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current

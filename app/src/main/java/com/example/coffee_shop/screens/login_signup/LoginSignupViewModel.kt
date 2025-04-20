@@ -88,7 +88,7 @@ class LoginSignupViewModel: ViewModel(){
 
             FirebaseFirestore.getInstance()
                 .collection("users")
-                .document(currentUser.uid) // Use uid as document ID
+                .document(currentUser.uid)
                 .set(user)
                 .addOnSuccessListener {
                     Log.d("Firestore", "User successfully written!")

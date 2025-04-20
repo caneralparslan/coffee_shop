@@ -65,7 +65,7 @@ fun OrderTile(
                 Text(
                     text = itemCounts.entries.joinToString(separator = ", ") {
                         val itemName = context.getString(it.key)
-                        "${itemName} x${it.value}"
+                        "$itemName x${it.value}"
                     },
                     textAlign = TextAlign.Center
                 )
