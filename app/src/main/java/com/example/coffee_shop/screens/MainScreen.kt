@@ -2,7 +2,6 @@ package com.example.coffee_shop.screens
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -15,8 +14,7 @@ import com.example.coffee_shop.R
 import com.example.coffee_shop.components.TopBar
 import com.example.coffee_shop.navigation.BottomNavItem
 import com.example.coffee_shop.navigation.BottomNavigationBar
-import com.example.coffee_shop.screens.login_signup.LoginScreen
-import com.example.coffee_shop.screens.login_signup.SignUpScreen
+import com.example.coffee_shop.screens.favorite.FavoriteScreen
 
 @Composable
 fun MainScreen(navController: NavController) {

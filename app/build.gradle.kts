@@ -111,4 +111,13 @@ dependencies {
     // GSON Converter
     implementation(libs.converter.gson)
 
+    // Room Runtime
+    implementation("androidx.room:room-runtime:2.7.0")
+
+    // Room Kotlin Extensions and Coroutines support
+    implementation("androidx.room:room-ktx:2.7.0")
+
+    // Room Annotation Processor (KSP)
+    ksp("androidx.room:room-compiler:2.7.0")
+
 }

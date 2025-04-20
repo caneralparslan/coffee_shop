@@ -53,12 +53,12 @@ fun ItemCard(
 
     Box (
         modifier = Modifier.padding(15.dp)
+            .clickable {
+            navController.navigate("item_details_screen/${item.id}")
+        },
     ){
         Card (
-            modifier = Modifier.height(210.dp).width(170.dp)
-                .clickable {
-                    navController.navigate("item_details_screen/${item.id}")
-                },
+            modifier = Modifier.height(210.dp).width(170.dp),
             shape = RoundedCornerShape(12.dp),
             border = BorderStroke(width = 1.dp, color = Color.LightGray),
             elevation = CardDefaults.cardElevation(4.dp)

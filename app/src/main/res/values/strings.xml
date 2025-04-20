@@ -21,6 +21,11 @@
     <string name="item_details">Item Details</string>
     <string name="number_of_items">items</string>
 
+    <string name="all_items">All Items</string>
+    <string name="hot_drinks">Hot Drinks</string>
+    <string name="cold_drinks">Cold Drinks</string>
+    <string name="foods">Foods</string>
+
     <string name="home">Home</string>
     <string name="favorites">Favorites</string>
     <string name="shopping_cart">Shopping Cart</string>
