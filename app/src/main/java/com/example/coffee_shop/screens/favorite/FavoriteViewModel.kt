@@ -2,6 +2,7 @@ package com.example.coffee_shop.screens.favorite
 
 import android.util.Log
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -25,16 +26,10 @@ class FavoriteViewModel @Inject constructor(private val repository: CoffeeShopDb
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getFavorites().distinctUntilChanged()
+            repository.getFavorites()
                 .collect{
                         listOfFavorites ->
-                    if(listOfFavorites.isEmpty() ){
-                        Log.d("List of Favorites", "List of Favorites is empty ")
-                    }
-                    else{
-                        _favList.value = listOfFavorites
-                        Log.d("FavList", "FavList: ${favList.value} ")
-                    }
+                    _favList.value = listOfFavorites
                 }
         }
     }

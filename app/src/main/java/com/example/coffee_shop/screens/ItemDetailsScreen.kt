@@ -54,6 +54,7 @@ import com.example.coffee_shop.components.TopBar
 import com.example.coffee_shop.data.itemsList
 import com.example.coffee_shop.models.Favorite
 import com.example.coffee_shop.models.Item
+import com.example.coffee_shop.screens.cart.CartViewModel
 import com.example.coffee_shop.screens.favorite.FavoriteViewModel
 
 
@@ -62,7 +63,8 @@ import com.example.coffee_shop.screens.favorite.FavoriteViewModel
 fun ItemDetailsScreen(
     navController: NavController = rememberNavController(),
     itemId: String = "1",
-    favoriteViewModel: FavoriteViewModel = hiltViewModel()
+    favoriteViewModel: FavoriteViewModel = hiltViewModel(),
+    cartViewModel: CartViewModel = hiltViewModel()
 ){
 
     Scaffold(
@@ -73,7 +75,7 @@ fun ItemDetailsScreen(
         }
     ) {
         innerPadding ->
-        DetailsContent(innerPadding, itemId, favoriteViewModel)
+        DetailsContent(innerPadding, itemId, favoriteViewModel, cartViewModel)
     }
 
 
@@ -81,7 +83,10 @@ fun ItemDetailsScreen(
 }
 
 @Composable
-fun DetailsContent(innerPadding: PaddingValues, itemId: String, favoriteViewModel: FavoriteViewModel) {
+fun DetailsContent(innerPadding: PaddingValues,
+                   itemId: String,
+                   favoriteViewModel: FavoriteViewModel,
+                   cartViewModel: CartViewModel) {
 
     // Since id is unique getting first item of the filtered list
     val item = itemsList.first { it.id == itemId }
@@ -110,7 +115,7 @@ fun DetailsContent(innerPadding: PaddingValues, itemId: String, favoriteViewMode
         DescriptionContent(item)
 
         Spacer(Modifier.height(50.dp))
-        PriceAndCartContent(item)
+        PriceAndCartContent(item, cartViewModel)
 
     }
 }
@@ -194,7 +199,8 @@ fun FavContent(itemId: String, favoriteViewModel: FavoriteViewModel) {
 
 
 @Composable
-fun PriceAndCartContent(item: Item){
+fun PriceAndCartContent(item: Item,
+                        cartViewModel: CartViewModel){
     val context = LocalContext.current
 
     Row (
@@ -239,8 +245,7 @@ fun PriceAndCartContent(item: Item){
                 ),
                 onClick = {
                     Toast.makeText(context, context.getString(R.string.item_added), Toast.LENGTH_SHORT ).show()
-
-                    //TODO add to cart
+                    cartViewModel.addItem(item)
                 }
             ) {
                 Icon(imageVector = Icons.Default.AddShoppingCart,

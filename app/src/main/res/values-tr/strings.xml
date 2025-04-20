@@ -21,6 +21,19 @@
     <string name="add_to_cart">Sepete Ekle</string>
     <string name="item_details">Ürün Detayları</string>
     <string name="number_of_items">adet ürün</string>
+    <string name="cart_total">Sepet Toplamı:</string>
+    <string name="order">Sipariş Ver</string>
+    <string name="yes">Evet</string>
+    <string name="cancel">Vazgeç</string>
+    <string name="log_out_title">Oturumu Kapat</string>
+    <string name="log_out_question">Oturumu sonlandırmak istediğine emin misin?</string>
+    <string name="place_order_title">Sipariş Oluştur</string>
+    <string name="place_order_question">Sepetinizi onaylıyor musunuz?</string>
+    <string name="order_received">Siparişiniz alındı!</string>
+    <string name="cart_empty">Sepetiniz Boş</string>
+    <string name="language">Dil</string>
+    <string name="start_shopping">Hemen Alışverişe Başla!</string>
+    <string name="start_adding_fav">Beğendiğin Ürünleri Favorilere Ekle!</string>
 
     <string name="all_items">Tüm Ürünler</string>
     <string name="hot_drinks">Sıcak İçecekler</string>
@@ -31,6 +44,7 @@
     <string name="favorites">Favoriler</string>
     <string name="shopping_cart">Sepet</string>
     <string name="settings">Ayarlar</string>
+    <string name="order_history">Sipariş Geçmişi</string>
 
     <string name="turkish">Türkçe</string>
     <string name="english">İngilizce</string>

@@ -14,6 +14,7 @@ import com.example.coffee_shop.R
 import com.example.coffee_shop.components.TopBar
 import com.example.coffee_shop.navigation.BottomNavItem
 import com.example.coffee_shop.navigation.BottomNavigationBar
+import com.example.coffee_shop.screens.cart.CartScreen
 import com.example.coffee_shop.screens.favorite.FavoriteScreen
 
 @Composable
@@ -21,11 +22,9 @@ fun MainScreen(navController: NavController) {
     val bottomNavController = rememberNavController()
 
 
-    // Observe current route
     val currentBackStackEntry = bottomNavController.currentBackStackEntryAsState()
     val currentDestination = currentBackStackEntry.value?.destination?.route
 
-    // Set dynamic title based on route
     val title = when (currentDestination) {
         BottomNavItem.Home.route -> stringResource(R.string.home)
         BottomNavItem.Favorite.route -> stringResource(R.string.favorites)
@@ -52,7 +51,7 @@ fun MainScreen(navController: NavController) {
         ) {
             composable(BottomNavItem.Home.route) { HomeScreen(navController) }
             composable(BottomNavItem.Favorite.route) { FavoriteScreen(navController) }
-            composable(BottomNavItem.Cart.route) { CartScreen() }
+            composable(BottomNavItem.Cart.route) { CartScreen(navController) }
         }
     }
 }

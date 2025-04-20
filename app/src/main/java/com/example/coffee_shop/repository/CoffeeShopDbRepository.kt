@@ -14,7 +14,5 @@ class CoffeeShopDbRepository @Inject constructor(private val coffeeShopDao: Coff
     suspend fun addFavorite(favorite: Favorite) = coffeeShopDao.addFavorite(favorite)
     suspend fun updateFavorite(favorite: Favorite) = coffeeShopDao.updateFavorite(favorite)
     suspend fun removeFavorite(id: String) = coffeeShopDao.removeFavoriteById(id)
-    suspend fun isFavorite(id: String): Boolean = coffeeShopDao.isFavorite(id)
     suspend fun deleteAllFavorites() = coffeeShopDao.deleteAllFavorites()
-
 }

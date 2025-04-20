@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun ActionButton(
     text: String,
+    buttonColor: Color = Color(0xFFFF742C),
     onAction: () -> Unit
 ){
     ElevatedButton(
@@ -26,7 +27,7 @@ fun ActionButton(
         },
         shape = RoundedCornerShape(24.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFFFF742C)
+            containerColor = buttonColor
         )
     ) {
         Text(text,

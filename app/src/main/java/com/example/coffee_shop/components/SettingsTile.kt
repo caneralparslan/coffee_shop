@@ -1,6 +1,7 @@
 package com.example.coffee_shop.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ExitToApp
+import androidx.compose.material.icons.filled.Coffee
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -34,7 +36,11 @@ fun SettingsTile(
     onClick: () -> Unit
 ){
     Card(
-        modifier = Modifier.fillMaxWidth().height(90.dp).padding(horizontal = 30.dp, vertical = 10.dp),
+        modifier = Modifier.fillMaxWidth().height(90.dp)
+            .padding(horizontal = 30.dp, vertical = 10.dp)
+            .clickable {
+                onClick.invoke()
+            },
         elevation = CardDefaults.cardElevation(4.dp),
         border = BorderStroke(width = 1.dp, color = Color.LightGray)
     ) {
@@ -54,16 +60,17 @@ fun SettingsTile(
 
             when (settingsType) {
                 "log_out" ->
-                    IconButton(
-                        onClick = onClick
-                    ) {
-                        Icon(imageVector = Icons.AutoMirrored.Outlined.ExitToApp,
-                            contentDescription = "Log Out Icon",
-                            tint = Color(0xFF2C2C2C))
-                    }
+                    Icon(imageVector = Icons.AutoMirrored.Outlined.ExitToApp,
+                        contentDescription = "Log Out Icon",
+                        tint = Color(0xFF2C2C2C))
 
                 "language" ->
                     Text(language.toString())
+
+                "order" ->
+                    Icon(imageVector = Icons.Default.Coffee,
+                        contentDescription = "Coffee Icon",
+                        tint = Color(0xFF2C2C2C))
             }
         }
     }

@@ -20,6 +20,20 @@
     <string name="add_to_cart">Add to Cart</string>
     <string name="item_details">Item Details</string>
     <string name="number_of_items">items</string>
+    <string name="cart_total">Cart Total:</string>
+    <string name="order">Order</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="log_out_title">Log Out</string>
+    <string name="log_out_question">Are you sure to log out ?</string>
+    <string name="place_order_title">Place Order</string>
+    <string name="place_order_question">Do you want to confirm your order?</string>
+    <string name="order_received">Your order has been received!</string>
+    <string name="cart_empty">Your Cart is Empty</string>
+    <string name="language">Language</string>
+    <string name="start_shopping">Start Shopping Now!</string>
+    <string name="start_adding_fav">Start Adding Items to Favorites!</string>
+
 
     <string name="all_items">All Items</string>
     <string name="hot_drinks">Hot Drinks</string>
@@ -30,6 +44,7 @@
     <string name="favorites">Favorites</string>
     <string name="shopping_cart">Shopping Cart</string>
     <string name="settings">Settings</string>
+    <string name="order_history">Order History</string>
 
     <string name="turkish">Turkish</string>
     <string name="english">English</string>

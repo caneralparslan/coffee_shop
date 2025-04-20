@@ -34,19 +34,22 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil3.compose.rememberAsyncImagePainter
 import com.example.coffee_shop.R
 import com.example.coffee_shop.data.itemsList
 import com.example.coffee_shop.models.Item
+import com.example.coffee_shop.screens.cart.CartViewModel
 
 
 @Preview
 @Composable
 fun ItemCard(
     item: Item = itemsList[0],
-    navController: NavController = rememberNavController()
+    navController: NavController = rememberNavController(),
+    cartViewModel: CartViewModel = hiltViewModel()
 ){
 
     val context = LocalContext.current
@@ -90,8 +93,7 @@ fun ItemCard(
                         ),
                         onClick = {
                             Toast.makeText(context, context.getString(R.string.item_added), Toast.LENGTH_SHORT ).show()
-
-                            //TODO add to cart
+                            cartViewModel.addItem(item)
                         }
                     ) {
                         Icon(imageVector = Icons.Default.AddShoppingCart,

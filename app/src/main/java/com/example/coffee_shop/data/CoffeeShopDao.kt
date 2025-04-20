@@ -25,9 +25,6 @@ interface CoffeeShopDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateFavorite(favorite: Favorite)
 
-    @Query("SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM FAVORITE_TBL WHERE id = :id")
-    suspend fun isFavorite(id: String): Boolean
-
     @Query("DELETE FROM favorite_tbl")
     suspend fun deleteAllFavorites()
 
