@@ -1,5 +1,9 @@
 package com.example.coffee_shop.screens
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -11,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.coffee_shop.R
+import com.example.coffee_shop.components.BannerAdView
 import com.example.coffee_shop.components.TopBar
 import com.example.coffee_shop.navigation.BottomNavItem
 import com.example.coffee_shop.navigation.BottomNavigationBar
@@ -44,14 +49,23 @@ fun MainScreen(navController: NavController) {
             BottomNavigationBar(bottomNavController)
         }
     ) { innerPadding ->
-        NavHost(
-            navController = bottomNavController,
-            startDestination = BottomNavItem.Home.route,
-            modifier = Modifier.padding(top = innerPadding.calculateTopPadding())
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
         ) {
-            composable(BottomNavItem.Home.route) { HomeScreen(navController) }
-            composable(BottomNavItem.Favorite.route) { FavoriteScreen(navController) }
-            composable(BottomNavItem.Cart.route) { CartScreen(navController) }
+            Box(modifier = Modifier.weight(1f)) {
+                NavHost(
+                    navController = bottomNavController,
+                    startDestination = BottomNavItem.Home.route,
+                ) {
+                    composable(BottomNavItem.Home.route) { HomeScreen(navController) }
+                    composable(BottomNavItem.Favorite.route) { FavoriteScreen(navController) }
+                    composable(BottomNavItem.Cart.route) { CartScreen(navController) }
+                }
+            }
+
+            BannerAdView() // Always sticks to bottom
         }
     }
 }

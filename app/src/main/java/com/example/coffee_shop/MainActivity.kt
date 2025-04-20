@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.coffee_shop.navigation.CoffeeShopNavigation
 import com.example.coffee_shop.screens.MainScreen
 import com.example.coffee_shop.ui.theme.CoffeeShopTheme
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.FirebaseApp
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,5 +49,7 @@ class CoffeeShopApplication: Application(){
     override fun onCreate() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
+        MobileAds.initialize(this) {}
+
     }
 }

@@ -3,7 +3,6 @@ package com.example.coffee_shop.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import javax.annotation.Nonnull
 
 
 @Entity(tableName = "favorite_tbl")

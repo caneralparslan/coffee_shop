@@ -38,7 +38,6 @@ import com.example.coffee_shop.components.CommonAlertDialog
 import com.example.coffee_shop.models.Item
 import com.example.coffee_shop.models.Order
 import com.example.coffee_shop.screens.orders.OrderViewModel
-import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun CartScreen(
@@ -68,12 +67,12 @@ fun CartContent(innerPadding: PaddingValues,
 
 
     Column (
-        modifier = Modifier.fillMaxSize().padding(top = innerPadding.calculateTopPadding(), bottom = 105.dp),
+        modifier = Modifier.fillMaxSize().padding(top = innerPadding.calculateTopPadding()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ){
         if(cartItems.isEmpty()){
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+            Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center){
                 Text(stringResource(R.string.start_shopping),
                     textAlign = TextAlign.Center,
                     style = TextStyle(

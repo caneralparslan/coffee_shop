@@ -1,5 +1,6 @@
 package com.example.coffee_shop.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -44,6 +45,7 @@ import com.example.coffee_shop.data.itemsList
 import com.example.coffee_shop.models.Item
 import com.example.coffee_shop.screens.cart.CartViewModel
 
+@SuppressLint("DefaultLocale")
 @Composable
 fun CartItemTile(
     item: Item,
@@ -91,7 +93,7 @@ fun CartItemTile(
                     )
 
                     Text(
-                        "${item.price * itemCount} $",
+                        String.format("%.2f", item.price * itemCount) + "$",
                         style = TextStyle(fontSize = 16.sp)
                     )
                 }
@@ -117,6 +119,7 @@ fun CartItemTile(
                         }
 
                         Text(
+                            modifier = Modifier.width(10.dp),
                             text = itemCount.toString(),
                             style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.Bold)
                         )

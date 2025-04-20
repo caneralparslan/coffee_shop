@@ -37,19 +37,22 @@ fun CommonAlertDialog(showDialog: MutableState<Boolean>,
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
+
+                    ElevatedButton(onClick = {
+                        // Cancel
+                        showDialog.value = false
+                    }) {
+                        Text(stringResource(cancelResId))
+                    }
+
+                    Spacer(modifier = Modifier.width(20.dp))
+
                     ElevatedButton(onClick = {
                         // Yes action
                         onConfirm.invoke()
 
                     }) {
                         Text(stringResource(confirmResId))
-                    }
-                    Spacer(modifier = Modifier.width(20.dp))
-                    ElevatedButton(onClick = {
-                        // Cancel
-                        showDialog.value = false
-                    }) {
-                        Text(stringResource(cancelResId))
                     }
                 }
             },

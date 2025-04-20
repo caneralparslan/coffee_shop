@@ -28,4 +28,8 @@ class OrderViewModel @Inject constructor(
     fun placeOrder(order: Order) {
         orderRepository.saveOrder(order)
     }
+
+    fun clearOrders(){
+        orderRepository.clearOrders()
+    }
 }

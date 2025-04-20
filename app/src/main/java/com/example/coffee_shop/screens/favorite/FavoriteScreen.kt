@@ -57,7 +57,7 @@ fun FavoriteContent(innerPadding: PaddingValues,
         }
     }else{
         LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(top = innerPadding.calculateTopPadding(), bottom = 105.dp)
+            modifier = Modifier.fillMaxSize().padding(top = innerPadding.calculateTopPadding())
         ) {
             items(favItems){
                     favItem ->

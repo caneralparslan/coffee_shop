@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coffee_shop.R
+import com.example.coffee_shop.components.BannerAdView
 import com.example.coffee_shop.components.CategoryChip
 import com.example.coffee_shop.components.ItemCard
 import com.example.coffee_shop.data.itemsList
@@ -68,7 +69,6 @@ fun HomeContent(navController: NavController = rememberNavController()) {
     val selectedCategory = remember { mutableStateOf(ItemCategory.ALL) }
     Column (
         modifier = Modifier.fillMaxSize()
-            .padding(bottom = 105.dp)
             .pointerInput(Unit) {
                 detectTapGestures(onTap = {
                     focusManager.clearFocus()

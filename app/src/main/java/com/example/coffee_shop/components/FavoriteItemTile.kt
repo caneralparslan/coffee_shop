@@ -1,5 +1,6 @@
 package com.example.coffee_shop.components
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -48,20 +49,28 @@ fun FavoriteItemTile(
     favoriteViewModel: FavoriteViewModel,
     navController: NavController
 ){
+
+    Log.d("Fav Item", "FavoriteItemTile: ${favoriteItem}")
     Box(
-        modifier = Modifier.fillMaxWidth().height(140.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(140.dp)
             .clickable {
                 navController.navigate("item_details_screen/${favoriteItem.id}")
             },
     ) {
         Card(
-            modifier = Modifier.fillMaxSize().padding(horizontal = 10.dp, vertical = 5.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 10.dp, vertical = 5.dp),
             shape = RoundedCornerShape(18.dp),
             border = BorderStroke(width = 1.dp, color = Color.LightGray),
             elevation = CardDefaults.cardElevation(4.dp)
         ) {
             Row(
-                modifier = Modifier.fillMaxSize().padding(start = 20.dp, top = 10.dp, bottom = 10.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 20.dp, top = 10.dp, bottom = 10.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {

@@ -120,4 +120,7 @@ dependencies {
     // Room Annotation Processor (KSP)
     ksp("androidx.room:room-compiler:2.7.0")
 
+    // AD
+    implementation("com.google.android.gms:play-services-ads:24.2.0")
+
 }
