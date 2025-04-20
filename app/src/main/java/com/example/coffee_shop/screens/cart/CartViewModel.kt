@@ -21,12 +21,17 @@ class CartViewModel @Inject constructor(
     private val _cartList = MutableStateFlow<List<Item>>(emptyList()) // local state
     val cartList: StateFlow<List<Item>> = _cartList
 
+    private val _totalPrice = MutableStateFlow(0.0)
+    val totalPrice: StateFlow<Double> = _totalPrice
+
+
     init {
         // Collect cart items when the ViewModel is initialized
         viewModelScope.launch(Dispatchers.IO) {
             cartRepository.cartItems
                 .collect { listOfCartItems ->
-                    _cartList.value = listOfCartItems // update local state
+                    _cartList.value = listOfCartItems
+                    _totalPrice.value = cartRepository.getTotalPrice()
                     Log.d("CartViewModel", "Updated Cart: $listOfCartItems")
                 }
         }
@@ -40,9 +45,13 @@ class CartViewModel @Inject constructor(
         viewModelScope.launch { cartRepository.removeItem(item) }
     }
 
-    fun getTotalPrice(): Double = cartRepository.getTotalPrice()
-
     fun clearCart() {
         viewModelScope.launch { cartRepository.clearCart() }
     }
+
+    fun removeAll(item: Item) {
+        viewModelScope.launch {cartRepository.removeAllOf(item)
+        }
+    }
+
 }

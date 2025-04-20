@@ -64,6 +64,8 @@ fun CartContent(innerPadding: PaddingValues,
                 orderViewModel: OrderViewModel) {
 
     val cartItems = cartViewModel.cartList.collectAsState().value
+    val totalPrice = cartViewModel.totalPrice.collectAsState().value
+
 
     Column (
         modifier = Modifier.fillMaxSize().padding(top = innerPadding.calculateTopPadding(), bottom = 105.dp),
@@ -82,13 +84,17 @@ fun CartContent(innerPadding: PaddingValues,
                 )
             }
         }else{
+            val groupedItems = cartItems.groupingBy { it.id }.eachCount()
+            val uniqueItems = cartItems.distinctBy { it.id }
+
             LazyColumn(
                 modifier = Modifier.weight(1f)
-            ){
-                items(cartItems){
-                        cartItem ->
+            ) {
+                items(uniqueItems) { item ->
+                    val quantity = groupedItems[item.id] ?: 1
                     CartItemTile(
-                        item = cartItem,
+                        item = item,
+                        itemCount = quantity,
                         navController = navController,
                         cartViewModel = cartViewModel
                     )
@@ -101,8 +107,8 @@ fun CartContent(innerPadding: PaddingValues,
             color = Color.LightGray
         )
 
-        CartTotal(cartViewModel)
-        OrderButton( cartItems, cartViewModel, orderViewModel )
+        CartTotal(totalPrice)
+        OrderButton( cartItems, totalPrice, cartViewModel, orderViewModel)
 
     }
 }
@@ -110,7 +116,8 @@ fun CartContent(innerPadding: PaddingValues,
 
 @SuppressLint("DefaultLocale")
 @Composable
-fun CartTotal(cartViewModel: CartViewModel){
+fun CartTotal(totalPrice: Double){
+
     Row (
         modifier = Modifier.fillMaxWidth().padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -122,12 +129,13 @@ fun CartTotal(cartViewModel: CartViewModel){
                 fontSize = 18.sp
             )
         )
-        Text(String.format("%.2f", cartViewModel.getTotalPrice()) + "$")
+        Text(String.format("%.2f", totalPrice) + "$")
     }
 }
 
 @Composable
 fun OrderButton(cartItems: List<Item>,
+                totalPrice: Double,
                 cartViewModel: CartViewModel,
                 orderViewModel: OrderViewModel){
 
@@ -152,7 +160,7 @@ fun OrderButton(cartItems: List<Item>,
 
         val order = Order(
             items = cartItems,
-            totalPrice = cartViewModel.getTotalPrice()
+            totalPrice = totalPrice
         )
         orderViewModel.placeOrder(order)
         Toast.makeText(context, context.getString(R.string.order_received), Toast.LENGTH_SHORT).show()

@@ -36,9 +36,14 @@ fun OrderTile(
     order: Order
 ){
     val context = LocalContext.current
+
+    // Group items by their nameResId and count occurrences
+    val itemCounts = order.items.groupingBy { it.nameResId }
+        .eachCount()
+
     Box(
-        modifier = Modifier.fillMaxWidth().height(140.dp).padding(horizontal = 15.dp, vertical = 8.dp))
-    {
+        modifier = Modifier.fillMaxWidth().height(140.dp).padding(horizontal = 15.dp, vertical = 8.dp)
+    ) {
         Card(
             modifier = Modifier.fillMaxSize(),
             shape = RoundedCornerShape(10.dp),
@@ -56,8 +61,14 @@ fun OrderTile(
                     )
                 )
 
-                Text(text = order.items.joinToString(separator = ", ") { context.getString(it.nameResId) },
-                    textAlign = TextAlign.Center)
+                // Join items with their counts
+                Text(
+                    text = itemCounts.entries.joinToString(separator = ", ") {
+                        val itemName = context.getString(it.key)
+                        "${itemName} x${it.value}"
+                    },
+                    textAlign = TextAlign.Center
+                )
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),

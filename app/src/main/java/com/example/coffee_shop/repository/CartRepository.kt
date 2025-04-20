@@ -31,7 +31,7 @@ class CartRepository @Inject constructor(
     private fun saveCart(cart: List<Item>) {
         val cartJson = gson.toJson(cart)
         sharedPreferences.edit().putString(cartKey, cartJson).apply()
-        _cartItems.value = cart // update internal StateFlow
+        _cartItems.value = loadCartFromPrefs()
     }
 
     // Add item to cart
@@ -40,11 +40,17 @@ class CartRepository @Inject constructor(
         saveCart(updatedCart)
     }
 
-    // Remove item from cart
+    // Remove the last occurrence of the item from the cart
     fun removeItem(item: Item) {
-        val updatedCart = _cartItems.value.toMutableList().apply { remove(item) }
+        val updatedCart = _cartItems.value.toMutableList().apply {
+            val lastIndex = indexOfLast { it.id == item.id }
+            if (lastIndex != -1) {
+                removeAt(lastIndex)
+            }
+        }
         saveCart(updatedCart)
     }
+
 
     // Get total price of items in the cart
     fun getTotalPrice(): Double {
@@ -56,4 +62,13 @@ class CartRepository @Inject constructor(
         sharedPreferences.edit().remove(cartKey).apply()
         _cartItems.value = emptyList() // clear the cart
     }
+
+    // Clear all the occurrences of given item
+    fun removeAllOf(item: Item) {
+        val currentList = _cartItems.value.toMutableList().apply {
+            removeAll { it.id == item.id }
+        }
+        saveCart(currentList)
+    }
+
 }

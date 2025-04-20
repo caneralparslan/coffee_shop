@@ -14,9 +14,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -29,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,53 +47,89 @@ import com.example.coffee_shop.screens.cart.CartViewModel
 @Composable
 fun CartItemTile(
     item: Item,
+    itemCount: Int,
     navController: NavController,
     cartViewModel: CartViewModel = hiltViewModel(),
-){
+) {
     Box(
-        modifier = Modifier.fillMaxWidth().height(140.dp)
-            .padding(horizontal = 20.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(160.dp)
+            .padding(horizontal = 10.dp)
             .clickable {
                 navController.navigate("item_details_screen/${item.id}")
             },
     ) {
         Column {
             Row(
-                modifier = Modifier.fillMaxSize().padding(start = 20.dp, top = 10.dp, bottom = 10.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 20.dp, top = 10.dp, bottom = 10.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Image(painter = rememberAsyncImagePainter(item.imageResId),
+                Image(
+                    painter = rememberAsyncImagePainter(item.imageResId),
                     contentDescription = "Cart Item Image",
                     modifier = Modifier
                         .size(100.dp)
-                        .clip(RoundedCornerShape(18.dp)))
+                        .clip(RoundedCornerShape(18.dp))
+                )
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxHeight().width(130.dp)
+                        .padding(vertical = 30.dp, horizontal = 6.dp)
+                ) {
+                    Text(
+                        stringResource(item.nameResId),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        style = TextStyle(fontSize = 20.sp,
+                            fontWeight = FontWeight.Medium)
+                    )
+
+                    Text(
+                        "${item.price * itemCount} $",
+                        style = TextStyle(fontSize = 16.sp)
+                    )
+                }
 
                 Column(
                     verticalArrangement = Arrangement.SpaceBetween,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(stringResource(item.nameResId), style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.Medium))
-
-                    Spacer(Modifier.height(20.dp))
-
-                    Text(item.price.toString() + "$", style = TextStyle(fontSize = 16.sp))
-                }
-
-                Column(
-                    modifier = Modifier.fillMaxHeight(),
-                    verticalArrangement = Arrangement.Top,
-                    horizontalAlignment = Alignment.End
-                ) {
                     IconButton(
-                        onClick = {
-                            cartViewModel.removeItem(item)
-                        }
+                        onClick = { cartViewModel.removeAll(item) },
                     ) {
-                        Icon(imageVector = Icons.Default.Delete,
-                            contentDescription = "Delete Icon", tint = Color.Red)
+                        Icon(Icons.Default.Delete, contentDescription = "Delete Icon", tint = Color.Red)
                     }
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        IconButton(onClick = {
+                            cartViewModel.removeItem(item)
+                        }) {
+                            Icon(imageVector = Icons.Default.Remove, contentDescription = "Subtract Icon")
+                        }
+
+                        Text(
+                            text = itemCount.toString(),
+                            style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                        )
+
+                        IconButton(onClick = {
+                            cartViewModel.addItem(item)
+                        }) {
+                            Icon(imageVector = Icons.Default.Add, contentDescription = "Add Icon")
+                        }
+                    }
+
                 }
+
             }
 
             HorizontalDivider(

@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.coffee_shop.models.Favorite
-import com.example.coffee_shop.models.Item
 import kotlinx.coroutines.flow.Flow
 
 
