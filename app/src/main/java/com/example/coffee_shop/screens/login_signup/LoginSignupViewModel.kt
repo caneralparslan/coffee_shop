@@ -77,7 +77,7 @@ class LoginSignupViewModel: ViewModel(){
     }
 
 
-    private fun createUserToFirestoreDb(userName: String) {
+    fun createUserToFirestoreDb(userName: String) {
         val currentUser = FirebaseAuth.getInstance().currentUser
 
         if (currentUser != null) {

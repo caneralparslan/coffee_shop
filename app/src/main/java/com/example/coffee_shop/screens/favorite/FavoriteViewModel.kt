@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,12 +20,17 @@ class FavoriteViewModel @Inject constructor(private val repository: CoffeeShopDb
     val favList = _favList.asStateFlow()
 
     init {
+        // Launching coroutine with IO dispatcher for database operations
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getFavorites()
-                .collect{
-                    listOfFavorites ->
-                    _favList.value = listOfFavorites
-                }
+            try {
+                repository.getFavorites()
+                    .catch { _favList.value = emptyList() }
+                    .collect { listOfFavorites ->
+                        _favList.value = listOfFavorites
+                    }
+            } catch (e: Exception) {
+                _favList.value = emptyList()
+            }
         }
     }
 

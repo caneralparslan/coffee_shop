@@ -126,5 +126,31 @@ dependencies {
 
     implementation("androidx.appcompat:appcompat:1.7.0")
 
+    // Unit test
+    testImplementation("junit:junit:4.13.2")
+
+    // Mocking and Kotlin Coroutines
+    testImplementation("org.mockito:mockito-core:5.2.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.1")
+    testImplementation("org.mockito:mockito-inline:5.2.0")
+
+    testImplementation("org.mockito:mockito-android:5.2.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+
+    testImplementation ("io.mockk:mockk:1.13.3" )
+
+
+    tasks.withType<Test>().configureEach {
+        jvmArgs("--add-opens=java.base/java.lang=ALL-UNNAMED")
+        systemProperty("net.bytebuddy.experimental", "true")
+    }
+
+    // For testing ViewModel with LiveData or Flow
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+
+
+
 
 }
