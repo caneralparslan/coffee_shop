@@ -2,7 +2,10 @@ package com.example.coffee_shop.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Coffee
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -28,6 +31,13 @@ fun ItemImageWithLoading(itemImageUrl: String, modifier: Modifier) {
                     .size(24.dp),
                 strokeWidth = 2.dp
             )
+        }
+
+        // Handle error state
+        if (state is AsyncImagePainter.State.Error) {
+            Icon(imageVector = Icons.Default.Coffee,
+                contentDescription = "Coffee Icon",
+                modifier = Modifier.fillMaxSize())
         }
 
         // Display the image once it's loaded

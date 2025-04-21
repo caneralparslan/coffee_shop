@@ -24,7 +24,7 @@ fun BottomNavigationBar(navController: NavController = rememberNavController()) 
     )
 
     NavigationBar(
-        modifier = Modifier.height(100.dp)
+        modifier = Modifier.height(80.dp)
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route

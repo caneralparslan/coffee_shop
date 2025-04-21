@@ -76,7 +76,7 @@ fun CartContent(innerPadding: PaddingValues,
                 Text(stringResource(R.string.start_shopping),
                     textAlign = TextAlign.Center,
                     style = TextStyle(
-                        fontSize = 32.sp,
+                        fontSize = 28.sp,
                         fontWeight = FontWeight.Medium,
                         color = Color.Red.copy(alpha = 0.9f)
                     )

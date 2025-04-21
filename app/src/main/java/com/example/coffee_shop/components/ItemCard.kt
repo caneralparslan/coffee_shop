@@ -2,7 +2,6 @@ package com.example.coffee_shop.components
 
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,23 +30,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.coffee_shop.R
-import com.example.coffee_shop.data.itemsList
 import com.example.coffee_shop.models.Item
 import com.example.coffee_shop.screens.cart.CartViewModel
 
 
-@Preview
 @Composable
 fun ItemCard(
-    item: Item = itemsList[0],
-    navController: NavController = rememberNavController(),
+    item: Item,
+    navController: NavController,
     cartViewModel: CartViewModel = hiltViewModel()
 ){
 
@@ -75,7 +71,9 @@ fun ItemCard(
                     Modifier.size(120.dp)
                         .clip(RoundedCornerShape(12.dp)))
 
-                Text(stringResource(item.nameResId), style = TextStyle(fontSize = 15.sp))
+                Text(stringResource(item.nameResId),
+                    textAlign = TextAlign.Center,
+                    style = TextStyle(fontSize = 15.sp))
 
                 Row (
                     modifier = Modifier.fillMaxWidth().height(30.dp).padding(horizontal = 6.dp),

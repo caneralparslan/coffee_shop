@@ -27,7 +27,7 @@ val itemsList = listOf(
     Item("17", R.string.item_iced_chai, R.string.desc_iced_chai, 6.59, BASE_URL + "iced_chai.png", ItemCategory.COLD_DRINKS),
     Item("18", R.string.item_lemonade, R.string.desc_lemonade, 4.99, BASE_URL + "lemonade.png", ItemCategory.COLD_DRINKS),
     Item("19", R.string.item_iced_peach_tea, R.string.desc_iced_peach_tea, 5.49, BASE_URL + "iced_peach_tea.png", ItemCategory.COLD_DRINKS),
-    Item("20", R.string.item_berry_smoothie, R.string.desc_berry_smoothie, 6.79, BASE_URL + "berry_smoothie.png", ItemCategory.COLD_DRINKS),
+    Item("20", R.string.item_berry_smoothie, R.string.desc_berry_smoothie, 6.79, BASE_URL + "berry_smothie.png", ItemCategory.COLD_DRINKS),
 
     Item("21", R.string.item_croissant, R.string.desc_croissant, 3.99, BASE_URL + "croissant.png", ItemCategory.FOODS),
     Item("22", R.string.item_bagel, R.string.desc_bagel, 2.99, BASE_URL + "bagel.png", ItemCategory.FOODS),
@@ -39,7 +39,7 @@ val itemsList = listOf(
     Item("28", R.string.item_quiche, R.string.desc_quiche, 5.79, BASE_URL + "quiche.png", ItemCategory.FOODS),
     Item("29", R.string.item_scone, R.string.desc_scone, 3.69, BASE_URL + "scone.png", ItemCategory.FOODS),
     Item("30", R.string.item_waffle, R.string.desc_waffle, 4.99, BASE_URL + "waffle.png", ItemCategory.FOODS),
-    Item("31", R.string.item_pancakes, R.string.desc_pancakes, 5.49, BASE_URL + "pancakes.png", ItemCategory.FOODS),
+    Item("31", R.string.item_pancakes, R.string.desc_pancakes, 5.49, BASE_URL + "pancake.png", ItemCategory.FOODS),
     Item("32", R.string.item_salad, R.string.desc_salad, 5.89, BASE_URL + "salad.png", ItemCategory.FOODS),
     Item("33", R.string.item_fruit_bowl, R.string.desc_fruit_bowl, 4.59, BASE_URL + "fruit_bowl.png", ItemCategory.FOODS),
     Item("34", R.string.item_donut, R.string.desc_donut, 2.99, BASE_URL + "donut.png", ItemCategory.FOODS),
